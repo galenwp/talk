@@ -1,5 +1,7 @@
 Infinite = null
 
+clas = require 'classnames'
+
 recl = React.createClass
 {div} = React.DOM
 
@@ -167,4 +169,8 @@ module.exports = recl
     else
       body = _messages
 
-    (div {className:"grams", key:"messages"}, body)
+    gramsClas = clas
+      grams: true
+      "read-only": @props.readOnly?
+
+    (div {className:gramsClas, key:"messages"}, body)

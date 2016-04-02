@@ -1,7 +1,7 @@
 clas = require 'classnames'
 
 recl = React.createClass
-{div,pre,a,label,h2,h3} = React.DOM
+{div,pre,a,img,label,h2,h3} = React.DOM
 
 Member          = require './MemberComponent.coffee'
 
@@ -29,11 +29,25 @@ module.exports = recl
     @props._handlePm user
 
   renderSpeech: ({lin,app,exp,tax,url,mor,fat,com}) ->  # one of
+    if url
+      txt = url.txt
+      ext = txt.split(".")
+      ext = ext[ext.length-1].toLowerCase()
+      if (ext is "jpg") or
+      (ext is "jpeg") or
+      (ext is "png") or
+      (ext is "gif")
+        image = true
+        txt = [(div {className:"image-placeholder"},""),
+              (div {className:"image"}, (img {src:txt}))]
+
     switch
       when (lin or app or exp or tax)
         (lin or app or exp or tax).txt
       when url
-        (a {href:url.txt,target:"_blank",key:"speech"}, url.txt)
+        attr = {href:url.txt,target:"_blank",key:"speech"}
+        if image then attr.className = "image"
+        (a attr, txt)
       when com
         (div {},
           com.txt

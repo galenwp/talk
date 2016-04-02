@@ -41,6 +41,7 @@
     font-weight: 400;
     margin-top: 0;
     padding-top: 0;
+    line-height: 1.1rem;
   }
 
   h3 { 
@@ -62,7 +63,9 @@ div.gram.same:hover div.meta {
   padding-top: 1rem;
 }
 
-.speech { margin-left: $grid-gutter-width; }
+.speech { 
+  margin-left: $grid-gutter-width;
+}
 
 .exp { 
   font-family: 'scp';
@@ -94,6 +97,52 @@ div.gram.same:hover div.meta {
       background-color: #000;
       color: #fff;
   }
+}
+
+.gram a.image {
+  text-decoration: none;
+}
+
+.gram a .image {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .1s ease-in-out;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.gram a .image-placeholder:before {
+  content: "Image";
+  font-weight: 500;
+  text-decoration: none;
+  color: #000;
+  transition: max-height .1s ease-in-out;
+  max-height: 1rem;
+}
+
+.gram a:hover .image {
+  max-height: 64rem;
+  overflow: scroll;
+  transition: max-height .1s ease-in-out; 
+}
+
+.gram a:hover .image-placeholder:before {
+  max-height: 0;
+  transition: max-height .1s ease-in-out;
+}
+
+.read-only .gram a .image {
+  max-height: none;
+}
+
+.read-only .gram a:hover .image {
+  max-height: none;
+}
+
+.gram a .image-placeholder:before {
+  display: none;
 }
 
 .comment { 
