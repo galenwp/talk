@@ -26,8 +26,8 @@ Persistence = _persistence MessageActions: module.exports =
     serial = util.uuid32()
 
     # audience.push util.mainStationPath window.urb.user
-    audience = _.uniq audience
-    # audience = ["~#{window.urb.ship}/home"]
+    # audience = _.uniq audience
+    audience = ["~#{window.urb.ship}/home"]
 
     _audi = {}
     for k,v of audience
